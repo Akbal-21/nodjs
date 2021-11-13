@@ -1,0 +1,29 @@
+###
+GET http://localhost:9000/api/ HTTP/1.1
+
+###
+POST http://localhost:9000/api/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "Nombre": "Fanta",
+    "descripcion": "Bebida Fanta sabor naranja de 500ml",
+    "precio": 14,
+    "numCompras": 0,
+    "imgPath": "https://koyal.com.pe/wp-content/uploads/2021/04/FANTA-NARANJA-BOT-X-500ML-300x300.png"
+}
+
+###
+DELETE http://localhost:9000/api/12 HTTP/1.1
+
+###
+PUT http://localhost:9000/api/12 HTTP/1.1
+Content-Type: application/json
+
+{
+    "Nombre": "Fanta",
+    "descripcion": "Bebida Fanta sabor naranja de 500ml",
+    "precio": 14,
+    "numCompras": 0,
+    "imgPath": "https://koyal.com.pe/wp-content/uploads/2021/04/FANTA-NARANJA-BOT-X-500ML-300x300.png"
+}
