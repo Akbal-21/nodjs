@@ -8,11 +8,11 @@ const app = express()
 app.set('port', process.env.PORT || 9000)
 
 const dboptions={
-    host: 'bxzuzr9pbguoz9y1mcxm-mysql.services.clever-cloud.com',
-    port: 3306,
-    user: 'ulhsrappbpyyzgb6',
-    password: 'C8agc3as8UGT7WrqG3TO',
-    database:'bxzuzr9pbguoz9y1mcxm'
+    host: 'bxzuzr9pbguoz9y1mcxm-mysql.services.clever-cloud.com',  //lovsl host
+    port: 3306,   //
+    user: 'ulhsrappbpyyzgb6',   ///root
+    password: 'C8agc3as8UGT7WrqG3TO',   //la que tu le asignas
+    database:'bxzuzr9pbguoz9y1mcxm'     //nombre de la base
 }
 
 //midelware-----------
