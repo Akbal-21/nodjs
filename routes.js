@@ -62,6 +62,22 @@ routes.get('/user/', (req, res)=>{
     })
 })
 
+routes.post('/user1/', (req, res)=>{
+    const {correo, pws} =req.body;
+    const query= `
+        call bxzuzr9pbguoz9y1mcxm.roll (?, ?);
+    `
+    req.getConnection((err, conn)=>{
+        if(err) return res.send(err)
+
+        conn.query(query, [correo, pws],(err, rows)=>{
+            if(err) return res.send(err)
+
+            res.json(rows)
+        })
+    })
+})
+
 routes.post('/user/', (req, res)=>{
     req.getConnection((err, conn)=>{
         if(err) return res.send(err)

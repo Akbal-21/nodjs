@@ -31,7 +31,13 @@ Content-Type: application/json
 
 
 ###
-GET http://localhost:9000/api/user/ HTTP/1.1
+post   http://localhost:9000/api/user1/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "correo": "arar@gmail.com",
+    "paws": "123456qw"
+}
 
 ###
 POST http://localhost:9000/api/user/ HTTP/1.1
@@ -41,7 +47,7 @@ Content-Type: application/json
     "Nombre": "lol",
     "ApMat": "pat",
     "ApPat": "asd",
-    "correo": "arar@gmail.com",
+    "correo": "sad@gmail.com",
     "pws": "123456qw",
     "roll": 2
 }
