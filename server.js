@@ -3,6 +3,7 @@ const mysql = require('mysql')
 const myconn = require('express-myconnection')
 const producto = require('./routes/producto')
 const usuario =require('./routes/usuario')
+const cart =require('./routes/cart')
 const cors = require('cors')
 
 //Setting --------------------------------
@@ -19,6 +20,7 @@ app.use(cors())
 //routes-----------
 app.use('/producto', producto)
 app.use('/usuario', usuario)
+app.use('/cart', cart)
 
 //Server runing --------------------------------
 app.listen(app.get('port'), ()=>{
