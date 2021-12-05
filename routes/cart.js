@@ -3,12 +3,14 @@ const routes = express.Router()
 const mysqlConnection = require('../databse')
 
 
-routes.get('/', (req, res) => {
-    const idUsuario = req.body.idUsuario
+routes.post('/', (req, res) => {
+    const idUsuario = req.body.idUsuario;
     mysqlConnection.query(' call bxzuzr9pbguoz9y1mcxm.carroProducto( ? );',[idUsuario], (err, rows) => {
         
+
         if (!err) {
             console.log(rows)
+            console.log(idUsuario);
             res.send(rows);
         } else {
             res.send(err)
@@ -35,7 +37,7 @@ routes.post('/', (req, res) => {
     })
 })
 
-routes.post('/carroDeleteProd', (req, res) => {
+routes.post('/carroDeleteProd/', (req, res) => {
 
     const query = `
             CALL bxzuzr9pbguoz9y1mcxm.carroDeleteProd(?, ?);
@@ -55,7 +57,7 @@ routes.post('/carroDeleteProd', (req, res) => {
 routes.post('/carroLimpiar', (req, res) => {
 
     const query = `
-            CALL bxzuzr9pbguoz9y1mcxm.carroLimpiar(?, ?);
+            CALL bxzuzr9pbguoz9y1mcxm.carroLimpiar(?);
         `
     const idUsuario = req.body.idUsuario
     mysqlConnection.query(query, [idUsuario], (err, result) => {
