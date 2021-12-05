@@ -9,17 +9,17 @@ routes.post('/', (req, res) => {
         
 
         if (!err) {
-            console.log(rows)
-            console.log(idUsuario);
+            //console.log(rows)
+            //console.log(idUsuario);
             res.send(rows);
         } else {
             res.send(err)
         }
     })
-})
+});
 
 
-routes.post('/', (req, res) => {
+routes.post('/carroAdd/', (req, res) => {
 
     const query = `
             CALL bxzuzr9pbguoz9y1mcxm.carroAdd(?, ?, ?);
@@ -35,7 +35,25 @@ routes.post('/', (req, res) => {
             res.send(err)
         }
     })
-})
+});
+
+routes.post('/carroAddAnother/', (req, res) => {
+
+    const query = `
+            CALL bxzuzr9pbguoz9y1mcxm.carroAddAnother(?, ?, ?);
+        `
+    const idUsuario = req.body.idUsuario
+    const idProducto = req.body.idProducto
+    const cantidad = req.body.cantidad
+
+    mysqlConnection.query(query, [idUsuario, idProducto, cantidad], (err, result) => {
+        if (!err) {
+            res.send('Producto Agregado al Carrito!');
+        } else {
+            res.send(err)
+        }
+    })
+});
 
 routes.post('/carroDeleteProd/', (req, res) => {
 
@@ -52,9 +70,9 @@ routes.post('/carroDeleteProd/', (req, res) => {
             res.send(err)
         }
     })
-})
+});
 
-routes.post('/carroLimpiar', (req, res) => {
+routes.post('/carroLimpiar/', (req, res) => {
 
     const query = `
             CALL bxzuzr9pbguoz9y1mcxm.carroLimpiar(?);
@@ -67,6 +85,22 @@ routes.post('/carroLimpiar', (req, res) => {
             res.send(err)
         }
     })
-})
+});
 
-module.exports = routes
+routes.post('/count/', (req, res) => {
+    const idUsuario = req.body.idUsuario;
+    const idProducto = req.body.idProducto;
+    mysqlConnection.query(' SELECT cantidad FROM carrito WHERE idUsuario = ? and idProducto = ?;',[idUsuario,idProducto], (err, rows) => {
+        
+
+        if (!err) {
+            //console.log(rows)
+            //console.log(idUsuario);
+            res.send(rows);
+        } else {
+            res.send(err)
+        }
+    })
+});
+
+module.exports = routes;
