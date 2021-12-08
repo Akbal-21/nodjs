@@ -102,5 +102,19 @@ routes.post('/count/', (req, res) => {
         }
     })
 });
+routes.post('/buy/', (req, res) => {
 
+    const query = `
+            CALL bxzuzr9pbguoz9y1mcxm.generarPedido(?,?);
+        `
+    const idUsuario = req.body.idUsuario;
+    const total = req.body.total;
+    mysqlConnection.query(query, [idUsuario,total], (err, result) => {
+        if (!err) {
+            res.send('Pedido generado');
+        } else {
+            res.send(err);
+        }
+    })
+});
 module.exports = routes;
